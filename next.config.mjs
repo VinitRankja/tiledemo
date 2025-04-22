@@ -12,6 +12,26 @@ const nextConfig = {
                 hostname: "www.simpolo.com",
                 port: "",
             },
+            {
+                protocol: "https",
+                hostname: "tailwindcss.com",
+                port: "",
+            },
+            {
+                protocol: "https",
+                hostname: "kajariatiles.com.au",
+                port: "",
+            },
+            {
+                protocol: "https",
+                hostname: "cdn.mos.cms.futurecdn.net",
+                port: "",
+            },
+            {
+                protocol: "https",
+                hostname: "milesoftiles.co.uk",
+                port: "",
+            },
         ],
     },
 };

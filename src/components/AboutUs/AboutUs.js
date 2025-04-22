@@ -31,8 +31,7 @@ export default function AboutUs() {
                                 dedicated to sourcing and supplying quality tiles to local contractors.
                             </p>
                             <p className="text-gray-600 mb-4">
-                                Over 30 years later, we've grown into one of the region's most trusted names in
-                                tile supply and installation, serving both residential and commercial clients.
+                                {"Over 30 years later, we've grown into one of the region's most trusted names intile supply and installation, serving both residential and commercial clients."}
                             </p>
                             <p className="text-gray-600">
                                 While our business has expanded, our commitment to quality, craftsmanship,

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -85,7 +86,7 @@ export default function HeroCarousel() {
               index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
-            <img
+            <Image
               src={image.src}
               alt={image.alt}
               className="object-cover w-full h-full"

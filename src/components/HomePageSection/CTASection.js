@@ -1,3 +1,6 @@
+import Image from "next/image";
+
+
 export default function CTASection() {
     return (
         <section className="py-16 bg-white">
@@ -25,8 +28,8 @@ export default function CTASection() {
                             </div>
                         </div>
                         <div className="hidden lg:block">
-                            <img
-                                src="/api/placeholder/800/600"
+                            <Image
+                                src="https://milesoftiles.co.uk/wp-content/uploads/1.112-Sand_003-1500x1061.jpg"
                                 alt="Interior design with premium tiles"
                                 className="w-full h-full object-cover"
                             />

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { Fragment, useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
@@ -217,7 +218,7 @@ export default function Navbar() {
                             {/* Logo */}
                             <div className="flex">
                                 <Link href="/" className='flex items-center gap-4' onClick={() => setMobileMenuOpen(false)}>
-                                    <img
+                                    <Image
                                         alt=""
                                         src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
                                         className="h-8 w-auto"

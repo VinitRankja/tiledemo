@@ -166,7 +166,7 @@ export default function WhereToBuy() {
       
       {/* Contact section */}
       <div className="mt-16 text-center bg-white p-8 rounded-lg shadow-sm">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Can't find a dealer near you?</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">{"Can't find a dealer near you?"}</h2>
         <p className="text-gray-600 mb-6">
           Contact our sales team for assistance in finding the nearest retailer or to inquire about becoming an authorized dealer.
         </p>

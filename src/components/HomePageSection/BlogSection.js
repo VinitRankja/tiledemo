@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function BlogSection() {
     const blogPosts = [
         {
@@ -48,7 +50,7 @@ export default function BlogSection() {
                     {blogPosts.map((post) => (
                         <article key={post.id} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
                             <div className="relative">
-                                <img
+                                <Image
                                     src={post.imageUrl}
                                     alt={post.title}
                                     className="w-full h-48 object-cover"

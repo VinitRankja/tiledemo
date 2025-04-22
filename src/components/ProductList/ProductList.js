@@ -1,4 +1,5 @@
 
+import Image from "next/image";
 import Link from "next/link";
 
 const products = [
@@ -47,7 +48,7 @@ const products = [
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 xl:grid-cols-3 xl:gap-x-3">
             {products.map((product) => (
               <Link key={product.id} href={product.href} className="group">
-                <img
+                <Image
                   alt={product.imageAlt}
                   src={product.imageSrc}
                   className="aspect-12/9 w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75"

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
@@ -60,7 +61,7 @@ export default function TestimonialsSection() {
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold text-gray-900">What Our Customers Say</h2>
                     <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-                        Don't just take our word for it — hear from customers who have transformed their spaces with our tiles.
+                        {"Don't just take our word for it — hear from customers who have transformed their spaces with our tiles."}
                     </p>
                 </div>
 
@@ -86,9 +87,9 @@ export default function TestimonialsSection() {
                                                 />
                                             ))}
                                         </div>
-                                        <p className="text-gray-700 text-lg mb-8 italic">"{testimonial.text}"</p>
+                                        <p className="text-gray-700 text-lg mb-8 italic">{`"${testimonial.text}"`}</p>
                                         <div className="flex items-center">
-                                            <img
+                                            <Image
                                                 src={testimonial.imageUrl}
                                                 alt={testimonial.author}
                                                 className="w-12 h-12 rounded-full object-cover"

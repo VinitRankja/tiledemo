@@ -63,7 +63,7 @@ export default function ContactUs() {
                         Contact Us
                     </h1>
                     <p className="mt-3 text-lg text-gray-500 max-w-2xl mx-auto">
-                        Have questions about our tile products or services? We're here to help.
+                        {"Have questions about our tile products or services? We're here to help."}
                     </p>
                 </div>
 

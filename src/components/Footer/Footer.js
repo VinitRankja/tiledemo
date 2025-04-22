@@ -1,5 +1,5 @@
 
-
+import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, MapPin, Phone, Mail, MessageSquare } from "lucide-react";
 
@@ -55,7 +55,7 @@ export default function Footer() {
                     {/* Brand section */}
                     <div className="lg:col-span-4 flex flex-col space-y-4">
                         <div className="flex items-center space-x-2">
-                            <img
+                            <Image
                                 alt="Logo"
                                 src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
                                 className="h-10 w-auto"

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { useState } from "react";
 
 export default function InspirationGallery() {
@@ -87,7 +88,7 @@ export default function InspirationGallery() {
                     {filteredProjects.map(project => (
                         <div key={project.id} className="group overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
                             <div className="relative overflow-hidden">
-                                <img
+                                <Image
                                     src={project.imageUrl}
                                     alt={project.title}
                                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"

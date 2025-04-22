@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function FeaturedCollections() {
     const collections = [
         {
@@ -44,7 +46,7 @@ export default function FeaturedCollections() {
                     {collections.map((collection) => (
                         <div key={collection.id} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                             <div className="aspect-w-3 aspect-h-2">
-                                <img
+                                <Image
                                     src={collection.imageUrl}
                                     alt={collection.name}
                                     className="object-cover w-full h-64 group-hover:scale-105 transition-transform duration-500"
