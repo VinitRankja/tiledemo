@@ -58,6 +58,8 @@ export default function Footer() {
                             <Image
                                 alt="Logo"
                                 src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                                width={100}
+                                height={100}
                                 className="h-10 w-auto"
                             />
                             <h2 className="text-2xl font-bold text-gray-800">Tile Demo</h2>

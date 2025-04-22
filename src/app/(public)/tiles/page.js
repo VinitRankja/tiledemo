@@ -199,7 +199,8 @@ export default function ProductListPage() {
 
         // Push the new URL with updated search params
         const query = params.toString();
-        router.push(`${window.location.pathname}${query ? '?' + query : ''}`);
+        router.push(`${router.pathname}?${query}`);
+
     };
 
     return (

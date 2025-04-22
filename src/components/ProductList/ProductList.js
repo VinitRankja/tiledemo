@@ -51,6 +51,8 @@ const products = [
                 <Image
                   alt={product.imageAlt}
                   src={product.imageSrc}
+                  width={700}
+                  height={450}
                   className="aspect-12/9 w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75"
                 />
                 <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>

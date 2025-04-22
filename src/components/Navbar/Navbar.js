@@ -219,9 +219,11 @@ export default function Navbar() {
                             <div className="flex">
                                 <Link href="/" className='flex items-center gap-4' onClick={() => setMobileMenuOpen(false)}>
                                     <Image
-                                        alt=""
+                                        alt="logo"
                                         src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
                                         className="h-8 w-auto"
+                                        width={100}
+                                        height={100}
                                     />
                                     <h2 className="text-xl">Tile Demo</h2>
                                 </Link>

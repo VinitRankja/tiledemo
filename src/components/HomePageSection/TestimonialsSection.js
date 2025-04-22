@@ -92,6 +92,8 @@ export default function TestimonialsSection() {
                                             <Image
                                                 src={testimonial.imageUrl}
                                                 alt={testimonial.author}
+                                                width={100}
+                                                height={100}
                                                 className="w-12 h-12 rounded-full object-cover"
                                             />
                                             <div className="ml-4 text-left">

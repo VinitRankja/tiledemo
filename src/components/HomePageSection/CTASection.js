@@ -31,6 +31,8 @@ export default function CTASection() {
                             <Image
                                 src="https://milesoftiles.co.uk/wp-content/uploads/1.112-Sand_003-1500x1061.jpg"
                                 alt="Interior design with premium tiles"
+                                width={400}
+                                height={500}
                                 className="w-full h-full object-cover"
                             />
                         </div>

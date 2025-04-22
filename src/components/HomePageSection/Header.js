@@ -89,6 +89,7 @@ export default function HeroCarousel() {
             <Image
               src={image.src}
               alt={image.alt}
+              fill={true}
               className="object-cover w-full h-full"
             />
             {/* Text overlay */}

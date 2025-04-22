@@ -49,6 +49,7 @@ export default function FeaturedCollections() {
                                 <Image
                                     src={collection.imageUrl}
                                     alt={collection.name}
+                                    fill={true}
                                     className="object-cover w-full h-64 group-hover:scale-105 transition-transform duration-500"
                                 />
                             </div>

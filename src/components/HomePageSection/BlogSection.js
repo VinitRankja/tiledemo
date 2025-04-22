@@ -53,6 +53,8 @@ export default function BlogSection() {
                                 <Image
                                     src={post.imageUrl}
                                     alt={post.title}
+                                    width={400}
+                                    height={250}
                                     className="w-full h-48 object-cover"
                                 />
                                 <div className="absolute top-4 left-4">

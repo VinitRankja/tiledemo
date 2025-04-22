@@ -91,6 +91,8 @@ export default function InspirationGallery() {
                                 <Image
                                     src={project.imageUrl}
                                     alt={project.title}
+                                    width={400}
+                                    height={500}
                                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300 flex items-end justify-start p-6">

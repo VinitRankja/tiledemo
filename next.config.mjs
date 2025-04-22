@@ -9,7 +9,17 @@ const nextConfig = {
             },
             {
                 protocol: "https",
+                hostname: "th.bing.com",
+                port: "",
+            },
+            {
+                protocol: "https",
                 hostname: "www.simpolo.com",
+                port: "",
+            },
+            {
+                protocol: "https",
+                hostname: "www.simpolo.net",
                 port: "",
             },
             {
