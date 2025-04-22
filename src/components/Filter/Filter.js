@@ -84,9 +84,9 @@ const filterOptions = [
 //     return classes.filter(Boolean).join(' ')
 // }
 
-export default function Filter({ children , setActiveFilters, activeFilters }) {
+export default function Filter({ children, setActiveFilters, activeFilters }) {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-    
+
 
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -115,7 +115,7 @@ export default function Filter({ children , setActiveFilters, activeFilters }) {
             const paramValue = searchParams.get(section.id);
             if (paramValue) {
                 const values = paramValue.split(',');
-                
+
                 // For radio buttons (location), only keep the first value
                 if (section.isRadio) {
                     newActiveFilters[section.id] = [values[0]];
@@ -139,7 +139,7 @@ export default function Filter({ children , setActiveFilters, activeFilters }) {
     const handleFilterChange = (sectionId, optionValue, checked) => {
         // Create a copy of the current active filters
         const updatedFilters = { ...activeFilters };
-        
+
         // Get the section to check if it's a radio
         const section = filterOptions.find(s => s.id === sectionId);
         const isRadio = section?.isRadio || false;
@@ -148,7 +148,7 @@ export default function Filter({ children , setActiveFilters, activeFilters }) {
             if (isRadio) {
                 // For radio buttons, replace the entire array with the new value
                 updatedFilters[sectionId] = [optionValue];
-                
+
                 // Update checked state in filterOptions
                 section.options.forEach(option => {
                     option.checked = option.value === optionValue;
@@ -232,8 +232,46 @@ export default function Filter({ children , setActiveFilters, activeFilters }) {
 
                             {/* Filters */}
                             <form className="mt-4 border-t border-gray-200">
+
+                                {/* Active filters section */}
+                                {Object.keys(activeFilters).length > 0 && (
+                                    <div className="border-b border-gray-200 py-6 px-4">
+                                        <h3 className="font-medium text-gray-900">Active Filters</h3>
+                                        <div className="mt-4 flex flex-wrap gap-2">
+                                            {Object.entries(activeFilters).flatMap(([sectionId, values]) =>
+                                                values.map(value => {
+                                                    const section = filterOptions.find(s => s.id === sectionId);
+                                                    const option = section?.options.find(o => o.value === value);
+                                                    return option ? (
+                                                        <button
+                                                            key={`${sectionId}-${value}`}
+                                                            type="button"
+                                                            onClick={() => handleFilterChange(sectionId, value, false)}
+                                                            className="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-sm text-gray-700"
+                                                        >
+                                                            {option.label}
+                                                            <XMarkIcon className="ml-1 size-4" />
+                                                        </button>
+                                                    ) : null;
+                                                })
+                                            )}
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setActiveFilters({});
+                                                    router.push(window.location.pathname);
+                                                }}
+                                                className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-sm text-red-700 hover:bg-red-100"
+                                            >
+                                                Clear all
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+
+
                                 {filterOptions.map((section) => (
-                                    <Disclosure key={section.id} as="div" className="border-t border-gray-200 px-4 py-6">
+                                    <Disclosure key={section.id} as="div" className="border-b border-gray-200 px-4 py-6">
                                         <h3 className="-mx-2 -my-3 flow-root">
                                             <DisclosureButton className="group flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
                                                 <span className="font-medium text-gray-900">{section.name}</span>
@@ -461,7 +499,7 @@ export default function Filter({ children , setActiveFilters, activeFilters }) {
 
                             {/* Product grid */}
                             <div className="lg:col-span-4">
-                               {children}
+                                {children}
                             </div>
                         </div>
                     </section>
