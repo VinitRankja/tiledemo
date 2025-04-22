@@ -199,7 +199,7 @@ export default function Filter({ children , setActiveFilters, activeFilters }) {
 
         // Push the new URL with updated search params
         const query = params.toString();
-        router.push(`${router.pathname}?${query}`);
+        router.push(`/tiles?${query}`);
 
     };
 
