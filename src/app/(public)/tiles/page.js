@@ -11,8 +11,9 @@ export default function ProductListPage() {
 
     return (
         <Suspense>
+            <div className='py-8' />
             <Filter setActiveFilters={setActiveFilters} activeFilters={activeFilters}>
-                <ProductList filters={activeFilters}/>
+                <ProductList activeFilters={activeFilters}/>
             </Filter>
         </Suspense>
     )

@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, MapPin, Phone, Mail, MessageSquare } from "lucide-react";
@@ -17,28 +16,28 @@ const sections = [
 
 // Contact information data structure
 const contactInfo = [
-    { 
-        id: 'address', 
+    {
+        id: 'address',
         label: 'Address',
         value: '1234 Street Name, City, State, 12345 Zip Code, XYZ',
         icon: <MapPin size={16} className="mr-2 flex-shrink-0" />
     },
-    { 
-        id: 'phone', 
+    {
+        id: 'phone',
         label: 'Toll Free',
         value: '+91 9876543221',
         href: 'tel:+919876543221',
         icon: <Phone size={16} className="mr-2 flex-shrink-0" />
     },
-    { 
-        id: 'whatsapp', 
+    {
+        id: 'whatsapp',
         label: 'WhatsApp',
         value: '+91 9876543221',
         href: 'https://wa.me/919876543221',
         icon: <MessageSquare size={16} className="mr-2 flex-shrink-0" />
     },
-    { 
-        id: 'email', 
+    {
+        id: 'email',
         label: 'Email',
         value: 'tile.demo@tile.com',
         href: 'mailto:TileDemo@tile.com',
@@ -48,7 +47,7 @@ const contactInfo = [
 
 export default function Footer() {
     return (
-        <footer className="bg-white text-gray-800 py-12 shadow-sm border-t border-gray-200">
+        <footer className="bg-white text-secondary-dark py-12 shadow-sm border-t border-secondary-light">
             <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Main footer content */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
@@ -62,23 +61,23 @@ export default function Footer() {
                                 height={100}
                                 className="h-10 w-auto"
                             />
-                            <h2 className="text-2xl font-bold text-gray-800">Tile Demo</h2>
+                            <h2 className="text-2xl font-bold text-secondary-dark">Tile Demo</h2>
                         </div>
-                        <p className="text-gray-600 mt-4 text-sm leading-relaxed">
+                        <p className="text-secondary mt-4 text-sm leading-relaxed">
                             This is a demo for a tile component. It is built with Next.js and Tailwind CSS.
                             It is a simple and easy to use component that can be used in any project.
                         </p>
 
                         <div className="flex mt-6 space-x-5">
-                            <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                            <Link href="#" className="text-secondary hover:text-primary transition-colors duration-200">
                                 <Facebook size={20} />
-                            </a>
-                            <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                            </Link>
+                            <Link href="#" className="text-secondary hover:text-primary transition-colors duration-200">
                                 <Twitter size={20} />
-                            </a>
-                            <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                            </Link>
+                            <Link href="#" className="text-secondary hover:text-primary transition-colors duration-200">
                                 <Instagram size={20} />
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -88,7 +87,7 @@ export default function Footer() {
                     {/* Navigation sections */}
                     {sections.map((section) => (
                         <div key={section.id} className="lg:col-span-3">
-                            <p id={`${section.id}-heading`} className="font-semibold text-lg text-gray-800 mb-4">
+                            <p id={`${section.id}-heading`} className="font-semibold text-lg text-secondary-dark mb-4">
                                 {section.name}
                             </p>
                             <ul
@@ -98,14 +97,14 @@ export default function Footer() {
                             >
                                 {section.items.map((item) => (
                                     <li key={item.name}>
-                                        <a
+                                        <Link
                                             href={item.href}
-                                            className="text-gray-500 hover:text-gray-800 transition-colors duration-200 text-sm flex items-center"
+                                            className="text-secondary hover:text-primary transition-colors duration-200 text-sm flex items-center"
                                         >
-                                            <span className="border-b border-transparent hover:border-gray-300 pb-1">
+                                            <span className="border-b border-transparent hover:border-primary pb-1">
                                                 {item.name}
                                             </span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -113,7 +112,7 @@ export default function Footer() {
                     ))}
 
                     <div className="lg:col-span-3">
-                        <p id='contact-us' className="font-semibold text-lg text-gray-800 mb-4">
+                        <p id='contact-us' className="font-semibold text-lg text-secondary-dark mb-4">
                             Contact Us
                         </p>
                         <ul
@@ -124,21 +123,21 @@ export default function Footer() {
                             {contactInfo.map((item) => (
                                 <li key={item.id} className="text-sm">
                                     {item.href ? (
-                                        <Link 
+                                        <Link
                                             href={item.href}
-                                            className="text-gray-500 hover:text-gray-800 transition-colors duration-200 flex items-start"
+                                            className="text-secondary hover:text-primary transition-colors duration-200 flex items-start"
                                         >
                                             {item.icon}
                                             <span>
-                                                <span className="font-medium text-gray-600">{item.label}: </span>
+                                                <span className="font-medium text-secondary-dark">{item.label}: </span>
                                                 {item.value}
                                             </span>
                                         </Link>
                                     ) : (
-                                        <div className="text-gray-500 flex items-start">
+                                        <div className="text-secondary flex items-start">
                                             {item.icon}
                                             <span>
-                                                <span className="font-medium text-gray-600">{item.label}: </span>
+                                                <span className="font-medium text-secondary-dark">{item.label}: </span>
                                                 {item.value}
                                             </span>
                                         </div>
@@ -150,8 +149,8 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="mt-12 pt-8 border-t border-gray-100">
-                    <p className="text-gray-500 text-sm text-center">
+                <div className="mt-12 pt-8 border-t border-secondary-light">
+                    <p className="text-secondary text-sm text-center">
                         &copy; {new Date().getFullYear()} Tile Demo. All rights reserved.
                     </p>
                 </div>

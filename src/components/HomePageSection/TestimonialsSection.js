@@ -56,11 +56,11 @@ export default function TestimonialsSection() {
     }, []);
 
     return (
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-secondary-light">
             <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-gray-900">What Our Customers Say</h2>
-                    <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    <h2 className="text-3xl font-bold text-secondary-dark">What Our Customers Say</h2>
+                    <p className="mt-4 text-lg text-secondary max-w-3xl mx-auto">
                         {"Don't just take our word for it — hear from customers who have transformed their spaces with our tiles."}
                     </p>
                 </div>
@@ -83,11 +83,11 @@ export default function TestimonialsSection() {
                                                 <Star
                                                     key={i}
                                                     fill={i < testimonial.rating ? "currentColor" : "none"}
-                                                    className={`h-5 w-5 ${i < testimonial.rating ? "text-yellow-500" : "text-gray-300"}`}
+                                                    className={`h-5 w-5 ${i < testimonial.rating ? "text-accent" : "text-secondary-light"}`}
                                                 />
                                             ))}
                                         </div>
-                                        <p className="text-gray-700 text-lg mb-8 italic">{`"${testimonial.text}"`}</p>
+                                        <p className="text-secondary text-lg mb-8 italic">{`"${testimonial.text}"`}</p>
                                         <div className="flex items-center">
                                             <Image
                                                 src={testimonial.imageUrl}
@@ -97,8 +97,8 @@ export default function TestimonialsSection() {
                                                 className="w-12 h-12 rounded-full object-cover"
                                             />
                                             <div className="ml-4 text-left">
-                                                <p className="font-semibold text-gray-900">{testimonial.author}</p>
-                                                <p className="text-gray-600 text-sm">{testimonial.role}</p>
+                                                <p className="font-semibold text-secondary-dark">{testimonial.author}</p>
+                                                <p className="text-secondary text-sm">{testimonial.role}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -110,14 +110,14 @@ export default function TestimonialsSection() {
                     {/* Navigation buttons */}
                     <button
                         onClick={prevTestimonial}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-8 bg-white rounded-full shadow-md p-2 text-gray-800 hover:text-gray-600 transition-colors duration-300"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-8 bg-white rounded-full shadow-md p-2 text-primary hover:text-primary-dark transition-colors duration-300"
                         aria-label="Previous testimonial"
                     >
                         <ChevronLeft size={24} />
                     </button>
                     <button
                         onClick={nextTestimonial}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-8 bg-white rounded-full shadow-md p-2 text-gray-800 hover:text-gray-600 transition-colors duration-300"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-8 bg-white rounded-full shadow-md p-2 text-primary hover:text-primary-dark transition-colors duration-300"
                         aria-label="Next testimonial"
                     >
                         <ChevronRight size={24} />
@@ -130,8 +130,8 @@ export default function TestimonialsSection() {
                                 key={index}
                                 onClick={() => setCurrentIndex(index)}
                                 className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                                        ? "bg-gray-800 w-6"
-                                        : "bg-gray-300 hover:bg-gray-400"
+                                        ? "bg-primary w-6"
+                                        : "bg-secondary-light hover:bg-secondary"
                                     }`}
                                 aria-label={`Go to testimonial ${index + 1}`}
                             />

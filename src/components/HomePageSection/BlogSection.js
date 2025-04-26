@@ -32,16 +32,16 @@ export default function BlogSection() {
     ];
 
     return (
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-secondary-light">
             <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center mb-12">
                     <div>
-                        <h2 className="text-3xl font-bold text-gray-900">From Our Blog</h2>
-                        <p className="mt-4 text-lg text-gray-600">
+                        <h2 className="text-3xl font-bold text-secondary-dark">From Our Blog</h2>
+                        <p className="mt-4 text-lg text-secondary">
                             Insights, ideas, and inspiration for your tiling projects.
                         </p>
                     </div>
-                    <a href="#" className="hidden md:inline-block px-6 py-2 border-2 border-gray-800 text-gray-800 font-medium rounded hover:bg-gray-800 hover:text-white transition-colors duration-300">
+                    <a href="#" className="hidden md:inline-block px-6 py-2 border-2 border-primary text-primary font-medium rounded hover:bg-primary hover:text-white transition-colors duration-300">
                         View All Posts
                     </a>
                 </div>
@@ -58,24 +58,24 @@ export default function BlogSection() {
                                     className="w-full h-48 object-cover"
                                 />
                                 <div className="absolute top-4 left-4">
-                                    <span className="bg-white px-3 py-1 text-xs font-medium text-gray-800 rounded-full">
+                                    <span className="bg-white px-3 py-1 text-xs font-medium text-primary-dark rounded-full">
                                         {post.category}
                                     </span>
                                 </div>
                             </div>
                             <div className="p-6">
-                                <div className="flex items-center text-sm text-gray-500 mb-3">
+                                <div className="flex items-center text-sm text-secondary mb-3">
                                     <span>{post.date}</span>
                                     <span className="mx-2">•</span>
                                     <span>{post.readTime}</span>
                                 </div>
-                                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                                    <a href="#" className="hover:text-gray-600 transition-colors duration-300">
+                                <h3 className="text-xl font-semibold text-secondary-dark mb-3">
+                                    <a href="#" className="hover:text-primary transition-colors duration-300">
                                         {post.title}
                                     </a>
                                 </h3>
-                                <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                                <a href="#" className="inline-flex items-center text-gray-800 font-medium hover:text-gray-600 transition-colors duration-300">
+                                <p className="text-secondary mb-4">{post.excerpt}</p>
+                                <a href="#" className="inline-flex items-center text-primary font-medium hover:text-primary-dark transition-colors duration-300">
                                     Read More
                                     <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -87,7 +87,7 @@ export default function BlogSection() {
                 </div>
 
                 <div className="mt-10 text-center md:hidden">
-                    <a href="#" className="inline-block px-6 py-2 border-2 border-gray-800 text-gray-800 font-medium rounded hover:bg-gray-800 hover:text-white transition-colors duration-300">
+                    <a href="#" className="inline-block px-6 py-2 border-2 border-primary text-primary font-medium rounded hover:bg-primary hover:text-white transition-colors duration-300">
                         View All Posts
                     </a>
                 </div>

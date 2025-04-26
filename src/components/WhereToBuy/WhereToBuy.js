@@ -1,6 +1,5 @@
 'use client'
 
-
 import Link from 'next/link';
 import { useState } from 'react';
 import { Search, MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
@@ -57,48 +56,48 @@ const dealersData = [
 export default function WhereToBuy() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProduct, setSelectedProduct] = useState('');
-  
+
   // Get unique product types from data
   const productTypes = Array.from(
     new Set(dealersData.flatMap(dealer => dealer.products))
   );
-  
+
   // Filter dealers based on search and product filter
   const filteredDealers = dealersData.filter(dealer => {
-    const matchesSearch = dealer.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         dealer.address.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = dealer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      dealer.address.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesProduct = selectedProduct === '' || dealer.products.includes(selectedProduct);
     return matchesSearch && matchesProduct;
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12 bg-gray-50">
+    <div className="max-w-6xl mx-auto px-4 py-12 bg-secondary-light">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Where to Buy Our Tiles</h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold text-secondary-dark mb-4">Where to Buy Our Tiles</h1>
+        <p className="text-lg text-secondary max-w-3xl mx-auto">
           Find authorized dealers and retailers that carry our premium tile products near you.
         </p>
       </div>
-      
+
       {/* Search and filter section */}
       <div className="bg-white p-6 rounded-lg shadow-sm mb-10">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
+              <Search className="h-5 w-5 text-secondary" />
             </div>
             <input
               type="text"
               placeholder="Search by name or location"
-              className="pl-10 pr-3 py-2 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-200 focus:outline-none"
+              className="pl-10 pr-3 py-2 w-full border border-secondary-light rounded-md focus:ring-2 focus:ring-primary-light focus:outline-none"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          
+
           <div className="md:w-64">
             <select
-              className="w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-2 focus:ring-gray-200 focus:outline-none"
+              className="w-full border border-secondary-light rounded-md py-2 px-3 focus:ring-2 focus:ring-primary-light focus:outline-none"
               value={selectedProduct}
               onChange={(e) => setSelectedProduct(e.target.value)}
             >
@@ -110,46 +109,46 @@ export default function WhereToBuy() {
           </div>
         </div>
       </div>
-      
+
       {/* Dealers listing */}
       <div className="grid md:grid-cols-2 gap-6">
         {filteredDealers.length > 0 ? (
           filteredDealers.map(dealer => (
-            <div key={dealer.id} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">{dealer.name}</h2>
-              
+            <div key={dealer.id} className="bg-white p-6 rounded-lg shadow-sm border border-secondary-light hover:shadow-md transition-shadow">
+              <h2 className="text-xl font-semibold text-secondary-dark mb-2">{dealer.name}</h2>
+
               <div className="flex items-start mt-4">
-                <MapPin className="h-5 w-5 text-gray-500 mt-0.5 mr-2 flex-shrink-0" />
-                <p className="text-gray-600">{dealer.address}</p>
+                <MapPin className="h-5 w-5 text-secondary mt-0.5 mr-2 flex-shrink-0" />
+                <p className="text-secondary">{dealer.address}</p>
               </div>
-              
+
               <div className="flex items-center mt-3">
-                <Phone className="h-5 w-5 text-gray-500 mr-2 flex-shrink-0" />
-                <p className="text-gray-600">{dealer.phone}</p>
+                <Phone className="h-5 w-5 text-secondary mr-2 flex-shrink-0" />
+                <p className="text-secondary">{dealer.phone}</p>
               </div>
-              
+
               <div className="flex items-center mt-3">
-                <Mail className="h-5 w-5 text-gray-500 mr-2 flex-shrink-0" />
-                <a href={`mailto:${dealer.email}`} className="text-blue-600 hover:underline">{dealer.email}</a>
+                <Mail className="h-5 w-5 text-secondary mr-2 flex-shrink-0" />
+                <a href={`mailto:${dealer.email}`} className="text-primary hover:underline">{dealer.email}</a>
               </div>
-              
+
               <div className="mt-4">
-                <p className="text-sm font-medium text-gray-700 mb-1">Available Products:</p>
+                <p className="text-sm font-medium text-secondary-dark mb-1">Available Products:</p>
                 <div className="flex flex-wrap gap-2">
                   {dealer.products.map(product => (
-                    <span key={product} className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">
+                    <span key={product} className="px-2 py-1 bg-primary-light text-primary-dark text-xs rounded-full">
                       {product}
                     </span>
                   ))}
                 </div>
               </div>
-              
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <a 
-                  href={dealer.website} 
-                  target="_blank" 
+
+              <div className="mt-4 pt-4 border-t border-secondary-light">
+                <a
+                  href={dealer.website}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-md transition-colors"
+                  className="flex items-center justify-center w-full py-2 px-4 bg-secondary-light hover:bg-primary-light text-secondary-dark rounded-md transition-colors"
                 >
                   <span>Visit Website</span>
                   <ExternalLink className="h-4 w-4 ml-1" />
@@ -159,21 +158,21 @@ export default function WhereToBuy() {
           ))
         ) : (
           <div className="col-span-2 text-center py-12">
-            <p className="text-gray-600">No dealers found matching your criteria. Please try a different search.</p>
+            <p className="text-secondary">No dealers found matching your criteria. Please try a different search.</p>
           </div>
         )}
       </div>
-      
+
       {/* Contact section */}
       <div className="mt-16 text-center bg-white p-8 rounded-lg shadow-sm">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">{"Can't find a dealer near you?"}</h2>
-        <p className="text-gray-600 mb-6">
+        <h2 className="text-2xl font-bold text-secondary-dark mb-4">{"Can't find a dealer near you?"}</h2>
+        <p className="text-secondary mb-6">
           Contact our sales team for assistance in finding the nearest retailer or to inquire about becoming an authorized dealer.
         </p>
         <div className="flex justify-center">
-          <Link 
-            href="/contact-us" 
-            className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
+          <Link
+            href="/contact-us"
+            className="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors"
           >
             Contact Us
           </Link>

@@ -1,9 +1,9 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { Fragment, useState, useEffect } from 'react'
+import Image from 'next/image';
 import { usePathname } from 'next/navigation'
+import Link from 'next/link';
+import { Fragment, useState, useEffect } from 'react';
 import {
     Dialog,
     DialogBackdrop,
@@ -17,8 +17,8 @@ import {
     TabList,
     TabPanel,
     TabPanels,
-} from '@headlessui/react'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+} from '@headlessui/react';
+import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const navigation = {
     categories: [
@@ -103,23 +103,43 @@ const navigation = {
         { name: 'Contact Us', href: '/contact-us' },
         { name: 'About Us', href: '/about-us' },
         { name: 'Where to buy', href: '/where-to-buy' },
-        { name: '', href: '#' },
     ],
 }
 
 export default function Navbar() {
+    const pathname = usePathname();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    
+    const [scrolled, setScrolled] = useState(false);
+    const isHomePage = pathname === '/';
+
+    // Update the navbar style immediately when the component mounts or pathname changes
+    useEffect(() => {
+        // Set scrolled to true immediately if not on home page
+        setScrolled(!isHomePage || window.scrollY > 10);
+
+        const handleScroll = () => {
+            if (isHomePage) {
+                setScrolled(window.scrollY > 10);
+            }
+        };
+
+        // Only add scroll listener on home page
+        if (isHomePage) {
+            window.addEventListener('scroll', handleScroll);
+            return () => window.removeEventListener('scroll', handleScroll);
+        }
+    }, [pathname, isHomePage]);
 
     // Custom Link component that closes menus on navigation
     const NavLink = ({ href, children, className, close }) => {
+        const isActive = pathname === href;
+
         return (
             <Link
                 href={href}
-                className={className}
+                className={`${className} ${isActive ? 'text-primary font-semibold' : 'text-secondary-dark hover:text-primary transition-colors duration-300'}`}
                 onClick={() => {
                     setMobileMenuOpen(false);
-                    // If a close function is provided, call it
                     if (typeof close === 'function') {
                         close();
                     }
@@ -130,13 +150,18 @@ export default function Navbar() {
         );
     };
 
+    // Determine navbar background style based on page and scroll position
+    const navbarStyle = scrolled
+        ? 'bg-white shadow-md'
+        : 'bg-white/40 backdrop-blur-md shadow-sm';
+
     return (
-        <div className="bg-white z-10">
+        <div className={`fixed w-full z-50 transition-all duration-300 ${navbarStyle}`}>
             {/* Mobile menu */}
-            <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="relative z-40 lg:hidden">
+            <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="relative z-50 lg:hidden">
                 <DialogBackdrop
                     transition
-                    className="fixed inset-0 bg-black/25 transition-opacity duration-300 ease-linear data-closed:opacity-0"
+                    className="fixed inset-0 bg-secondary-dark/50 transition-opacity duration-300 ease-linear data-closed:opacity-0"
                 />
 
                 <div className="fixed inset-0 z-40 flex">
@@ -148,7 +173,7 @@ export default function Navbar() {
                             <button
                                 type="button"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                                className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-secondary hover:text-primary transition-colors duration-300"
                             >
                                 <span className="absolute -inset-0.5" />
                                 <span className="sr-only">Close menu</span>
@@ -158,12 +183,12 @@ export default function Navbar() {
 
                         {/* Links */}
                         <TabGroup className="mt-2">
-                            <div className="border-b border-gray-200">
+                            <div className="border-b border-secondary-light">
                                 <TabList className="-mb-px flex space-x-8 px-4">
                                     {navigation.categories.map((category) => (
                                         <Tab
                                             key={category.name}
-                                            className="flex-1 border-b-2 border-transparent px-1 py-4 text-base font-medium whitespace-nowrap text-gray-900 data-selected:border-indigo-600 data-selected:text-indigo-600"
+                                            className="flex-1 border-b-2 border-transparent px-1 py-4 text-base font-medium whitespace-nowrap text-secondary data-selected:border-primary data-selected:text-primary transition-all duration-300"
                                         >
                                             {category.name}
                                         </Tab>
@@ -175,7 +200,7 @@ export default function Navbar() {
                                     <TabPanel key={category.name} className="space-y-10 px-4 pt-10 pb-8">
                                         {category.sections.map((section) => (
                                             <div key={section.name}>
-                                                <p id={`${category.id}-${section.id}-heading-mobile`} className="font-medium text-gray-900">
+                                                <p id={`${category.id}-${section.id}-heading-mobile`} className="font-medium text-primary uppercase tracking-wide text-sm">
                                                     {section.name}
                                                 </p>
                                                 <ul
@@ -185,7 +210,7 @@ export default function Navbar() {
                                                 >
                                                     {section.items.map((item) => (
                                                         <li key={item.name} className="flow-root">
-                                                            <NavLink href={item.href} className="-m-2 block p-2 text-gray-500">
+                                                            <NavLink href={item.href} className="-m-2 block p-2">
                                                                 {item.name}
                                                             </NavLink>
                                                         </li>
@@ -198,10 +223,10 @@ export default function Navbar() {
                             </TabPanels>
                         </TabGroup>
 
-                        <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                        <div className="space-y-6 border-t border-secondary-light px-4 py-6">
                             {navigation.pages.map((page) => (
                                 <div key={page.name} className="flow-root">
-                                    <NavLink href={page.href} className="-m-2 block p-2 font-medium text-gray-900">
+                                    <NavLink href={page.href} className="-m-2 block p-2 font-medium">
                                         {page.name}
                                     </NavLink>
                                 </div>
@@ -211,28 +236,30 @@ export default function Navbar() {
                 </div>
             </Dialog>
 
-            <header className="relative bg-white">
+            <header className="relative">
                 <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="border-b border-gray-200">
+                    <div className={`transition-all duration-300 ${scrolled ? 'border-b border-secondary-light' : 'border-b border-transparent'}`}>
                         <div className="flex h-16 items-center justify-between">
                             {/* Logo */}
                             <div className="flex">
-                                <Link href="/" className='flex items-center gap-4' onClick={() => setMobileMenuOpen(false)}>
-                                    <Image
-                                        alt="logo"
-                                        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                                        className="h-8 w-auto"
-                                        width={100}
-                                        height={100}
-                                    />
-                                    <h2 className="text-xl">Tile Demo</h2>
+                                <Link href="/" className='flex items-center gap-4 group' onClick={() => setMobileMenuOpen(false)}>
+                                    <div className="overflow-hidden rounded-full bg-primary-light p-1 transition-all duration-300 group-hover:bg-primary/20">
+                                        <Image
+                                            alt="logo"
+                                            src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=0ea5e9"
+                                            className="h-8 w-auto"
+                                            width={100}
+                                            height={100}
+                                        />
+                                    </div>
+                                    <h2 className="text-xl text-secondary-dark font-semibold tracking-wide transition-all duration-300 group-hover:text-primary">Tile Demo</h2>
                                 </Link>
                             </div>
 
                             <button
                                 type="button"
                                 onClick={() => setMobileMenuOpen(true)}
-                                className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
+                                className="relative rounded-md p-2 text-secondary hover:text-primary transition-colors duration-300 lg:hidden"
                             >
                                 <span className="absolute -inset-0.5" />
                                 <span className="sr-only">Open menu</span>
@@ -245,12 +272,11 @@ export default function Navbar() {
                                     {navigation.categories.map((category) => (
                                         <Popover key={category.name} className="flex">
                                             {({ open, close }) => {
-
                                                 return (
                                                     <>
                                                         <div className="relative flex">
                                                             <PopoverButton
-                                                                className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-open:border-indigo-600 data-open:text-indigo-600"
+                                                                className={`relative z-10 -mb-px flex items-center border-b-2 pt-px text-md font-medium tracking-wide transition-colors duration-300 ease-out ${open ? 'border-primary text-primary' : 'border-transparent text-secondary-dark hover:text-primary'}`}
                                                             >
                                                                 {category.name}
                                                             </PopoverButton>
@@ -258,10 +284,9 @@ export default function Navbar() {
 
                                                         <PopoverPanel
                                                             transition
-                                                            className="absolute inset-x-0 top-full text-sm text-gray-500 transition data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in z-10"
+                                                            className="absolute inset-x-0 top-full text-sm text-secondary transition data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in z-0"
                                                         >
-                                                            {/* Presentational element used to render the bottom shadow */}
-                                                            <div aria-hidden="true" className="absolute inset-0 top-1/2 bg-white shadow-sm" />
+                                                            <div className="absolute inset-0 top-1/2 shadow-lg" />
 
                                                             <div className="relative bg-white">
                                                                 <div className="mx-auto max-w-7xl px-8">
@@ -269,7 +294,7 @@ export default function Navbar() {
                                                                         <div className="grid grid-cols-4 gap-x-8 gap-y-10 text-sm">
                                                                             {category.sections.map((section) => (
                                                                                 <div key={section.name}>
-                                                                                    <p id={`${section.name}-heading`} className="font-medium text-gray-900">
+                                                                                    <p id={`${section.name}-heading`} className="font-medium text-primary uppercase tracking-wider text-xs">
                                                                                         {section.name}
                                                                                     </p>
                                                                                     <ul
@@ -279,12 +304,13 @@ export default function Navbar() {
                                                                                     >
                                                                                         {section.items.map((item) => (
                                                                                             <li key={item.name} className="flex">
-                                                                                                <NavLink 
-                                                                                                    href={item.href} 
-                                                                                                    className="hover:text-gray-800"
+                                                                                                <NavLink
+                                                                                                    href={item.href}
+                                                                                                    className="relative group"
                                                                                                     close={close}
                                                                                                 >
                                                                                                     {item.name}
+                                                                                                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                                                                                                 </NavLink>
                                                                                             </li>
                                                                                         ))}
@@ -306,9 +332,10 @@ export default function Navbar() {
                                         <NavLink
                                             key={page.name}
                                             href={page.href}
-                                            className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                                            className="flex items-center text-md font-medium relative group tracking-wide"
                                         >
                                             {page.name}
+                                            <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                                         </NavLink>
                                     ))}
                                 </div>

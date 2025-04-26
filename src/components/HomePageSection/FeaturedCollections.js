@@ -33,41 +33,59 @@ export default function FeaturedCollections() {
     ];
 
     return (
-        <section className="py-16 bg-white">
+        <section className="py-20 md:py-28 bg-gradient-to-br from-primary-light via-white to-primary-light">
             <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-gray-900">Featured Collections</h2>
-                    <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                {/* Heading with stylish accents */}
+                <div className="text-center mb-16 relative">
+                    <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-secondary-dark to-primary-dark">
+                        Featured Collections
+                    </h2>
+                    <p className="mt-5 text-lg text-secondary max-w-3xl mx-auto font-light leading-relaxed">
                         Explore our most popular tile collections, crafted with precision and designed for beauty and durability.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {/* Grid of transparent glass-effect cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                     {collections.map((collection) => (
-                        <div key={collection.id} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                            <div className="aspect-w-3 aspect-h-2">
+                        <a
+                            href="#"
+                            key={collection.id}
+                            className="group cursor-pointer block relative overflow-hidden rounded-xl backdrop-blur-sm bg-white/60 border border-primary-light shadow-sm shadow-black/10 hover:shadow-xl hover:shadow-black/30 transition-all duration-300 transform hover:-translate-y-1"
+                        >
+                            {/* Image container */}
+                            <div className="relative h-56 md:h-64 overflow-hidden">
                                 <Image
                                     src={collection.imageUrl}
                                     alt={collection.name}
-                                    fill={true}
-                                    className="object-cover w-full h-64 group-hover:scale-105 transition-transform duration-500"
+                                    width={500}
+                                    height={300}
+                                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
                                 />
-                            </div>
-                            <div className="absolute top-4 right-4">
-                                <span className="bg-white bg-opacity-90 text-gray-800 text-xs font-medium px-2 py-1 rounded">
-                                    {collection.category}
-                                </span>
-                            </div>
-                            <div className="p-6 bg-white">
-                                <h3 className="text-xl font-semibold text-gray-900">{collection.name}</h3>
-                                <p className="mt-2 text-gray-600">{collection.description}</p>
-                                <div className="mt-4">
-                                    <a href="#" className="text-gray-800 font-medium inline-flex items-center border-b-2 border-gray-800 hover:text-gray-600 hover:border-gray-600 transition-colors duration-300">
-                                        View Collection
-                                    </a>
+
+                                {/* Category tag with glass effect */}
+                                <div className="absolute top-4 right-4">
+                                    <span className="backdrop-blur-md bg-white/70 text-primary-dark text-xs font-medium px-3 py-1 rounded-full shadow-sm">
+                                        {collection.category}
+                                    </span>
                                 </div>
+
+                                {/* Gradient overlay that reveals on hover */}
+                                {/* <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/60 via-primary-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
                             </div>
-                        </div>
+
+                            {/* Content area with glass effect */}
+                            <div className="p-6 pb-12 backdrop-blur-sm bg-white/60 border-t border-white/30">
+                                <h3 className="text-xl font-semibold tracking-tight text-secondary-dark group-hover:text-primary transition-colors">
+                                    {collection.name}
+                                </h3>
+
+                                <p className="text-secondary text-sm leading-relaxed">
+                                    {collection.description}
+                                </p>
+
+                            </div>
+                        </a>
                     ))}
                 </div>
             </div>

@@ -235,8 +235,8 @@ export default function Filter({ children, setActiveFilters, activeFilters }) {
 
                                 {/* Active filters section */}
                                 {Object.keys(activeFilters).length > 0 && (
-                                    <div className="border-b border-gray-200 py-6 px-4">
-                                        <h3 className="font-medium text-gray-900">Active Filters</h3>
+                                    <div className="border-b border-secondary-light py-6 px-4">
+                                        <h3 className="font-medium text-secondary-dark">Active Filters</h3>
                                         <div className="mt-4 flex flex-wrap gap-2">
                                             {Object.entries(activeFilters).flatMap(([sectionId, values]) =>
                                                 values.map(value => {
@@ -247,7 +247,7 @@ export default function Filter({ children, setActiveFilters, activeFilters }) {
                                                             key={`${sectionId}-${value}`}
                                                             type="button"
                                                             onClick={() => handleFilterChange(sectionId, value, false)}
-                                                            className="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-sm text-gray-700"
+                                                            className="inline-flex items-center rounded-md bg-primary-light px-2 py-1 text-sm text-primary-dark hover:bg-primary-light hover:text-primary-dark transition-colors"
                                                         >
                                                             {option.label}
                                                             <XMarkIcon className="ml-1 size-4" />
@@ -261,7 +261,7 @@ export default function Filter({ children, setActiveFilters, activeFilters }) {
                                                     setActiveFilters({});
                                                     router.push(window.location.pathname);
                                                 }}
-                                                className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-sm text-red-700 hover:bg-red-100"
+                                                className="inline-flex items-center rounded-md bg-secondary-light px-2 py-1 text-sm text-secondary-dark hover:bg-secondary hover:text-white transition-colors"
                                             >
                                                 Clear all
                                             </button>
@@ -364,7 +364,7 @@ export default function Filter({ children, setActiveFilters, activeFilters }) {
                             <button
                                 type="button"
                                 onClick={() => setMobileFiltersOpen(true)}
-                                className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+                                className="-m-2 ml-4 p-2 text-primary hover:text-primary-dark focus:outline-none focus:ring-2 focus:ring-primary sm:ml-6 lg:hidden"
                             >
                                 <span className="sr-only">Filters</span>
                                 <FunnelIcon aria-hidden="true" className="size-5" />
@@ -380,10 +380,11 @@ export default function Filter({ children, setActiveFilters, activeFilters }) {
                         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
                             {/* Filters */}
                             <form className="hidden lg:block">
+
                                 {/* Active filters section */}
                                 {Object.keys(activeFilters).length > 0 && (
-                                    <div className="border-b border-gray-200 py-6">
-                                        <h3 className="font-medium text-gray-900">Active Filters</h3>
+                                    <div className="border-b border-secondary-light py-6">
+                                        <h3 className="font-medium text-secondary-dark">Active Filters</h3>
                                         <div className="mt-4 flex flex-wrap gap-2">
                                             {Object.entries(activeFilters).flatMap(([sectionId, values]) =>
                                                 values.map(value => {
@@ -394,7 +395,7 @@ export default function Filter({ children, setActiveFilters, activeFilters }) {
                                                             key={`${sectionId}-${value}`}
                                                             type="button"
                                                             onClick={() => handleFilterChange(sectionId, value, false)}
-                                                            className="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-sm text-gray-700"
+                                                            className="inline-flex items-center rounded-md bg-primary-light px-2 py-1 text-sm text-primary-dark hover:bg-primary-light hover:text-primary-dark transition-colors"
                                                         >
                                                             {option.label}
                                                             <XMarkIcon className="ml-1 size-4" />
@@ -408,7 +409,7 @@ export default function Filter({ children, setActiveFilters, activeFilters }) {
                                                     setActiveFilters({});
                                                     router.push(window.location.pathname);
                                                 }}
-                                                className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-sm text-red-700 hover:bg-red-100"
+                                                className="inline-flex items-center rounded-md bg-secondary-light px-2 py-1 text-sm text-secondary-dark hover:bg-secondary hover:text-white transition-colors"
                                             >
                                                 Clear all
                                             </button>
