@@ -67,7 +67,7 @@ export default function WhyChooseUs() {
 
                 <div className="mt-16 text-center">
                     <p className="text-secondary italic">
-                        "Our commitment to excellence has made us the preferred choice for designers and homeowners alike."
+                        {`"Our commitment to excellence has made us the preferred choice for designers and homeowners alike."`}
                     </p>
                 </div>
             </div>

@@ -221,7 +221,7 @@ export default function ProductList({ activeFilters }) {
               </div>
             </div>
             <h3 className="text-lg font-medium text-secondary-dark">No products match your filters</h3>
-            <p className="mt-2 text-sm text-secondary">Try adjusting your filter criteria to find what you're looking for.</p>
+            <p className="mt-2 text-sm text-secondary">{`Try adjusting your filter criteria to find what you're looking for.`}</p>
             <button 
               onClick={() => {
                 // This would need to be connected to the clear filters function
