@@ -1,3 +1,4 @@
+'use client'
 
 import TileDetail from "@/components/TileDetail/TileDetail";
 

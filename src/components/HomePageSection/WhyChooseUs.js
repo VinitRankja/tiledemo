@@ -1,3 +1,5 @@
+'use client'
+
 import { Shield, Award, Truck, ThumbsUp } from "lucide-react";
 
 export default function WhyChooseUs() {

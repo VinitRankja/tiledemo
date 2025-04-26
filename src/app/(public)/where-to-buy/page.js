@@ -1,3 +1,4 @@
+'use client'
 
 import WhereToBuy from '@/components/WhereToBuy/WhereToBuy';
 
