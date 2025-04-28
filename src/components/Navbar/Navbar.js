@@ -153,7 +153,7 @@ export default function Navbar() {
     // Determine navbar background style based on page and scroll position
     const navbarStyle = scrolled
         ? 'bg-white shadow-md'
-        : 'bg-white/40 backdrop-blur-md shadow-sm';
+        : 'bg-white/30 backdrop-blur-md shadow-sm';
 
     return (
         <div className={`fixed w-full z-50 transition-all duration-300 ${navbarStyle}`}>

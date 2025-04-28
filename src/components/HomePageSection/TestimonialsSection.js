@@ -131,7 +131,7 @@ export default function TestimonialsSection() {
                                 onClick={() => setCurrentIndex(index)}
                                 className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex
                                         ? "bg-primary w-6"
-                                        : "bg-secondary-light hover:bg-secondary"
+                                        : "bg-primary/50 hover:bg-secondary"
                                     }`}
                                 aria-label={`Go to testimonial ${index + 1}`}
                             />
